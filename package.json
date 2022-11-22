@@ -1,0 +1,14 @@
+{
+  "name": "buger-eats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "DinoSaulo",
+  "license": "MIT",
+  "dependencies": {
+    "cypress": "^11.1.0"
+  }
+}
