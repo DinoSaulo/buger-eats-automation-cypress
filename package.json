@@ -10,5 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "cypress": "^11.1.0"
+  },
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.8"
   }
 }
