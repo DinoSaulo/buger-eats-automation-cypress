@@ -1,5 +1,8 @@
+import SignupPage from '../pages/signupPage'
+
 describe('Cadastro', () => {
-    it('Usuário deve se tornar um entregador', () => {
+
+    beforeEach(() => {
         cy.viewport(1920, 1080)
         cy.visit('https://buger-eats.vercel.app')
 
@@ -7,44 +10,63 @@ describe('Cadastro', () => {
 
         cy.url().should('contains', '/deliver')
         cy.get('#page-deliver form h1').should('have.text', 'Cadastre-se para  fazer entregas')
+    })
 
-        var entregador = {
-            nome: 'Saulo Barros',
+    it('Usuário deve se tornar um deliver', () => {
+
+        var deliver = {
+            name: 'Saulo Barros',
             cpf: '00000014141',
             email: 'saulo@email.com',
             whatsapp: 1140028922,
-            endereco: {
+            address: {
                 cep: '50030230',
-                rua: 'Cais do Apolo',
-                numero: '1234',
-                complemento: 'Sem complemento',
-                bairro: 'Recife',
-                cidade_uf: 'Recife/PE'
+                street: 'Cais do Apolo',
+                number: '1234',
+                details: 'Sem complemento',
+                district: 'Recife',
+                city_state: 'Recife/PE'
             },
-            metodo_entrega: 'Moto',
+            deliver_method: 'Moto',
             cnh: '../../images/cnh-digital.jpg'
         }
 
-        cy.get('input[name="name"]').type(entregador.nome)
-        cy.get('input[name="cpf"]').type(entregador.cpf)
-        cy.get('input[name="email"]').type(entregador.email)
-        cy.get('input[name="whatsapp"]').type(entregador.whatsapp)
+        const expectMessage = 'Recebemos os seus dados. Fique de olho na sua caixa de email, pois e em breve retornamos o contato.'
 
-        cy.get('input[name="postalcode"]').type(entregador.endereco.cep)
-        cy.get('input[type=button][value="Buscar CEP"]').click()
+        var signupPage = new SignupPage()
 
-        cy.get('input[name="address-number"]').type(entregador.endereco.numero)
-        cy.get('input[name="address-details"]').type(entregador.endereco.complemento)
+        signupPage.fillForm(deliver)
+        signupPage.submit()
+        signupPage.modalContentShouldBe(expectMessage)
 
-        // address assertions
-        cy.get('input[name="address"]').should('have.value', entregador.endereco.rua)
-        cy.get('input[name="district"]').should('have.value', entregador.endereco.bairro)
-        cy.get('input[name="city-uf"]').should('have.value', entregador.endereco.cidade_uf)
+    })
 
-        cy.contains('.delivery-method li', entregador.metodo_entrega).click()
+    it('CPF incorreto', () => {
 
-        cy.get('input[accept^="image"]').attachFile(entregador.cnh)
+        var deliver = {
+            name: 'Saulo Barros',
+            cpf: '00000000000',
+            email: 'saulo@email.com',
+            whatsapp: 1140028922,
+            address: {
+                cep: '50030230',
+                street: 'Cais do Apolo',
+                number: '1234',
+                details: 'Sem complemento',
+                district: 'Recife',
+                city_state: 'Recife/PE'
+            },
+            deliver_method: 'Moto',
+            cnh: '../../images/cnh-digital.jpg'
+        }
 
-        cy.get('form button[type=submit]').click()
+        const expectMessage = 'Oops! CPF inválido'
+
+        var signupPage = new SignupPage()
+
+        signupPage.fillForm(deliver)
+        signupPage.submit()
+        signupPage.errorMessageContentShouldBe(expectMessage)
+
     })
 })
