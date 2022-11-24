@@ -1,0 +1,35 @@
+{
+    "signup": {
+        "name": "Saulo Barros",
+        "cpf": "00000014141",
+        "email": "saulo@email.com",
+        "whatsapp": 1140028922,
+        "address": {
+            "cep": "50030230",
+            "street": "Cais do Apolo",
+            "number": "1234",
+            "details": "Sem complemento",
+            "district": "Recife",
+            "city_state": "Recife/PE"
+        },
+        "deliver_method": "Moto",
+        "cnh": "../../images/cnh-digital.jpg"
+    },
+
+    "invalid_user": {
+        "name": "Pedro Paulo",
+        "cpf": "00000000000",
+        "email": "pedro@email.com",
+        "whatsapp": 1834648400,
+        "address": {
+            "cep": "50030230",
+            "street": "Cais do Apolo",
+            "number": "1234",
+            "details": "Sem complemento",
+            "district": "Recife",
+            "city_state": "Recife/PE"
+        },
+        "deliver_method": "Moto",
+        "cnh": "../../images/cnh-digital.jpg"
+    }
+}
