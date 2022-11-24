@@ -9,9 +9,11 @@
   "author": "DinoSaulo",
   "license": "MIT",
   "dependencies": {
-    "cypress": "^11.1.0"
+    "cypress": "^11.1.0",
+    "gerador-validador-cpf": "^5.0.2"
   },
   "devDependencies": {
-    "cypress-file-upload": "^5.0.8"
+    "cypress-file-upload": "^5.0.8",
+    "faker": "^5.5.3"
   }
 }

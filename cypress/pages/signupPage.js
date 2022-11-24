@@ -1,7 +1,7 @@
 class SignupPage {
 
     fillForm(deliver){
-        cy.get('input[name="name"]').type(deliver.name)
+        cy.get('input[name="fullName"]').type(deliver.name)
         cy.get('input[name="cpf"]').type(deliver.cpf)
         cy.get('input[name="email"]').type(deliver.email)
         cy.get('input[name="whatsapp"]').type(deliver.whatsapp)
@@ -31,7 +31,7 @@ class SignupPage {
     }
 
     errorMessageContentShouldBe(expectMessage){
-        cy.get('.alert-error').should('have.text', expectMessage)
+        cy.contains('.alert-error', expectMessage).should('be.visible')
     }
 }
 
