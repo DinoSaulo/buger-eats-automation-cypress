@@ -37,7 +37,7 @@ describe('Signup', () => {
 
         deliver.cpf = `${deliver.cpf}abc`
 
-        const expectMessage = 'Oops! CPF inválidu'
+        const expectMessage = 'Oops! CPF inválido'
 
         signupPage.fillForm(deliver)
         signupPage.submit()
